@@ -14,7 +14,10 @@ RUN adduser \
     --uid ${NB_UID} \
     ${NB_USER}
 
-RUN echo "source /venv/bin/activate" >> ${HOME}/.bashrc
+# RUN echo "source /venv/bin/activate" >> ${HOME}/.bashrc
+
+### Alternative  for source /venv/bin/activate
+ENV PATH=/venv/bin:$PATH
 
 # RUN source /venv/bin/activate && \
 #     pip install --no-cache notebook

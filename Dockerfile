@@ -4,12 +4,14 @@ FROM gbrammer/grizli-lambda:0.8.0
 
 ENV NB_USER jovyan
 ENV NB_UID 1000
-ENV HOME /home/${NB_USER}
 
+# Edited for amazonlinux
 RUN adduser \
     --comment "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
+
+ENV HOME /home/${NB_USER}
 
 RUN echo "source /venv/bin/activate" >> ${HOME}/.bashrc
 

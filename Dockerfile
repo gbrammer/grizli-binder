@@ -18,18 +18,14 @@ RUN adduser \
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
-RUN chown -R ${NB_UID} /venv/
-USER ${NB_USER}
 
-# RUN echo "source /venv/bin/activate" >> ${HOME}/.bashrc
-### Alternative  for source /venv/bin/activate
+# Alternative  for source /venv/bin/activate
 ENV PATH=/venv/bin:$PATH
 
+USER root
 RUN pip install --upgrade pip && \
     pip install --upgrade setuptools && \
     pip install --no-cache notebook
     
-# RUN source /venv/bin/activate && \
-#     pip install --no-cache notebook
-    
+USER ${NB_USER}
 WORKDIR ${HOME}

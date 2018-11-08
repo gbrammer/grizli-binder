@@ -14,11 +14,20 @@ RUN adduser \
     --uid ${NB_UID} \
     ${NB_USER}
 
-# RUN echo "source /venv/bin/activate" >> ${HOME}/.bashrc
+# Make sure the contents of our repo are in ${HOME}
+COPY . ${HOME}
+USER root
+RUN chown -R ${NB_UID} ${HOME}
+USER ${NB_USER}
 
+# RUN echo "source /venv/bin/activate" >> ${HOME}/.bashrc
 ### Alternative  for source /venv/bin/activate
 ENV PATH=/venv/bin:$PATH
 
+RUN pip install --upgrade pip && \
+    pip install --upgrade setuptools && \
+    pip install --no-cache notebook
+    
 # RUN source /venv/bin/activate && \
 #     pip install --no-cache notebook
     

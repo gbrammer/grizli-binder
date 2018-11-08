@@ -18,6 +18,7 @@ RUN adduser \
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
+RUN chown -R ${NB_UID} /venv/
 USER ${NB_USER}
 
 # RUN echo "source /venv/bin/activate" >> ${HOME}/.bashrc

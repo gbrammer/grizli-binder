@@ -1,4 +1,4 @@
-FROM gbrammer/grizli-lambda:0.8.0
+FROM gbrammer/grizli-lambda:latest
 
 ### https://github.com/binder-examples/minimal-dockerfile/blob/master/Dockerfile
 
